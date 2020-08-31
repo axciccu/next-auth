@@ -221,7 +221,7 @@ async function _getOAuthAccessToken (code, provider, callback) {
   }
 
   const postData = querystring.stringify(params)
-  logger.error('LOG HEADERS POST', headers)
+  
   this._request(
     'POST',
     url,
@@ -256,7 +256,7 @@ async function _getOAuthAccessToken (code, provider, callback) {
 function _get (provider, accessToken, callback) {
   const url = provider.profileUrl
   const headers = provider.headers || {}
-  logger.error('LOG HEADERS GET 1', headers,"\nBasic Auth", provider.basicAuth, (provider.basicAuth === true || provider.basicAuth === 'true'))
+  
   if (this._useAuthorizationHeaderForGET) {
     if(provider.basicAuth === true || provider.basicAuth === 'true' ){
       headers.app_auth = this.buildAuthHeader(accessToken)
@@ -269,7 +269,7 @@ function _get (provider, accessToken, callback) {
     headers['Client-ID'] = provider.clientId
     accessToken = null
   }
-  logger.error('LOG HEADERS GET 2', headers, "\nToken", accessToken)
+  
   this._request('GET', url, headers, null, accessToken, callback)
 }
 

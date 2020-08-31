@@ -188,6 +188,7 @@ async function _getProfile (error, profileData, accessToken, refreshToken, provi
 // Ported from https://github.com/ciaranj/node-oauth/blob/a7f8a1e21c362eb4ed2039431fb9ac2ae749f26a/lib/oauth2.js
 async function _getOAuthAccessToken (code, provider, callback) {
   const url = provider.accessTokenUrl
+  logger.error('LOG PROVIDER', provider.setGetAccessTokenAuthHeader)
   const setGetAccessTokenAuthHeader = (provider.setGetAccessTokenAuthHeader !== null) ? provider.setGetAccessTokenAuthHeader : true
   const params = { ...provider.params } || {}
   const headers = { ...provider.headers } || {}
@@ -220,7 +221,7 @@ async function _getOAuthAccessToken (code, provider, callback) {
   }
 
   const postData = querystring.stringify(params)
-
+  logger.error('LOG HEADERS POST', headers)
   this._request(
     'POST',
     url,
@@ -255,7 +256,7 @@ async function _getOAuthAccessToken (code, provider, callback) {
 function _get (provider, accessToken, callback) {
   const url = provider.profileUrl
   const headers = provider.headers || {}
-
+  logger.error('LOG HEADERS GET', headers)
   if (this._useAuthorizationHeaderForGET) {
     headers.Authorization = this.buildAuthHeader(accessToken)
 

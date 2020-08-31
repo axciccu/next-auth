@@ -258,7 +258,10 @@ function _get (provider, accessToken, callback) {
   const headers = provider.headers || {}
   logger.error('LOG HEADERS GET', headers)
   if (this._useAuthorizationHeaderForGET) {
-    headers.Authorization = this.buildAuthHeader(accessToken)
+    if(provider.basicAuth === true)
+      headers.AppAuth = this.buildAuthHeader(accessToken)
+    else
+      headers.Authorization = this.buildAuthHeader(accessToken)
 
     // This line is required for Twitch
     headers['Client-ID'] = provider.clientId

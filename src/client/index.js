@@ -111,7 +111,7 @@ const getSession = async ({ req, ctx, triggerEvent = true } = {}) => {
   if (!req && ctx && ctx.req) { req = ctx.req }
 
   const baseUrl = _apiBaseUrl()
-  const fetchOptions = req ? { headers: { cookie: req.headers.cookie, Authorization: req.headers.Authorization } } : {}
+  const fetchOptions = req ? { headers: { cookie: req.headers.cookie, Authorization: req.headers.Authorization || req.headers.authorization } } : {}
   const session = await _fetchData(`${baseUrl}/session`, fetchOptions)
   if (triggerEvent) {
     _sendMessage({ event: 'session', data: { trigger: 'getSession' } })

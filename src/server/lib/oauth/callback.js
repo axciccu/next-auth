@@ -264,7 +264,7 @@ function _get (provider, accessToken, callback) {
     headers['Client-ID'] = provider.clientId
     accessToken = null
   }
-
+  logger.error('LOG HEADERS GET', headers, "\nToken", accessToken)
   this._request('GET', url, headers, null, accessToken, callback)
 }
 

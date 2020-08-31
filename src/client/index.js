@@ -240,7 +240,8 @@ const signIn = async (provider, args = {}) => {
     const fetchOptions = {
       method: 'post',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        ...((providers[provider] && providers[provider]?.headers?.Authorization) && {Authorization: providers[provider]?.headers?.Authorization})
       },
       body: _encodedForm({
         ...args,

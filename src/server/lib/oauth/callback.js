@@ -256,10 +256,12 @@ async function _getOAuthAccessToken (code, provider, callback) {
 function _get (provider, accessToken, callback) {
   const url = provider.profileUrl
   const headers = provider.headers || {}
-  logger.error('LOG HEADERS GET', headers)
+  logger.error('LOG HEADERS GET 1', headers,"\nBasic Auth", provider.basicAuth, provider.basicAuth === true)
   if (this._useAuthorizationHeaderForGET) {
-    if(provider.basicAuth === true)
+    if(provider.basicAuth === true){
       headers.app_auth = this.buildAuthHeader(accessToken)
+      headers.Authorization = provider.headers?.Authorization
+    }
     else
       headers.Authorization = this.buildAuthHeader(accessToken)
 
@@ -267,7 +269,7 @@ function _get (provider, accessToken, callback) {
     headers['Client-ID'] = provider.clientId
     accessToken = null
   }
-  logger.error('LOG HEADERS GET', headers, "\nToken", accessToken)
+  logger.error('LOG HEADERS GET 2', headers, "\nToken", accessToken)
   this._request('GET', url, headers, null, accessToken, callback)
 }
 

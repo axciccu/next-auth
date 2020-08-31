@@ -259,7 +259,7 @@ function _get (provider, accessToken, callback) {
   logger.error('LOG HEADERS GET', headers)
   if (this._useAuthorizationHeaderForGET) {
     if(provider.basicAuth === true)
-      headers.AppAuth = this.buildAuthHeader(accessToken)
+      headers.app_auth = this.buildAuthHeader(accessToken)
     else
       headers.Authorization = this.buildAuthHeader(accessToken)
 

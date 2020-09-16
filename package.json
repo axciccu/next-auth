@@ -1,13 +1,14 @@
 {
-  "name": "next-auth",
+  "name": "@ras/next-auth",
   "version": "3.1.0",
-  "description": "Authentication for Next.js",
+  "description": "Authentication for Next.js - RAS Fork",
   "homepage": "https://next-auth.js.org",
-  "repository": "https://github.com/nextauthjs/next-auth.git",
-  "author": "Iain Collins <me@iaincollins.com>",
+  "repository": "https://github.com/GiampaoloF95/next-auth.git",
+  "author": "Iain Collins <me@iaincollins.com>, Giampaolo Fois <giampaolo.fois@softfobia.com>",
   "main": "index.js",
   "scripts": {
     "prepare": "npm run build:js && npm run build:css",
+    "postinstall":"npm run build:js && npm run build:css",
     "build": "npm run build:js && npm run build:css",
     "build:js": "babel src --out-dir dist",
     "build:css": "postcss src/**/*.css --base src --dir dist && node scripts/wrap-css.js",

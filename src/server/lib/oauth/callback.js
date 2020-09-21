@@ -262,14 +262,15 @@ function _get (provider, accessToken, callback) {
       headers.app_auth = this.buildAuthHeader(accessToken)
       headers.Authorization = provider.headers?.Authorization
     }
-    else
+    else{
       headers.Authorization = this.buildAuthHeader(accessToken)
+    }
 
     // This line is required for Twitch
     headers['Client-ID'] = provider.clientId
     accessToken = null
   }
-  
+  logger.error('OAUTH_GET_ACCESS_TOKEN_HEADERS', headers)
   this._request('GET', url, headers, null, accessToken, callback)
 }
 

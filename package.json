@@ -1,7 +1,7 @@
 {
-  "name": "next-auth",
-  "version": "3.1.0",
-  "description": "Authentication for Next.js",
+  "name": "@ras/next-auth",
+  "version": "3.1.1",
+  "description": "Authentication for Next.js ",
   "homepage": "https://next-auth.js.org",
   "repository": "https://github.com/GiampaoloF95/next-auth.git",
   "author": "Iain Collins <me@iaincollins.com>, Giampaolo Fois <giampaolo.fois@softfobia.com>",

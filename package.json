@@ -1,6 +1,6 @@
 {
-  "name": "@ras/next-auth",
-  "version": "3.1.0",
+  "name": "next-auth-ras",
+  "version": "3.1.1",
   "description": "Authentication for Next.js ",
   "homepage": "https://next-auth.js.org",
   "repository": "https://github.com/GiampaoloF95/next-auth.git",

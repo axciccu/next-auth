@@ -260,7 +260,7 @@ function _get (provider, accessToken, callback) {
   if (this._useAuthorizationHeaderForGET) {
     
     if(provider.basicAuth === true || provider.basicAuth === 'true' ){
-      logger.warn("USING_BASIC_AUTH", {Bearer: this.buildAuthHeader(accessToken), BasicKey: provider.headers?.Authorization})
+      logger.warn("USING_BASIC_AUTH", {Bearer: accessToken, buildAuth: this.buildAuthHeader(accessToken), provider: provider})
       headers.app_auth = this.buildAuthHeader(accessToken)
       headers.Authorization = provider.headers?.Authorization
     }

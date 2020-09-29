@@ -286,6 +286,7 @@ const Provider = ({ children, session, options }) => {
 
 const _fetchData = async (url, options = {}) => {
   try {
+    logger.warn("FETCH_CLIENT_OPTIONS", {options: options, url: url})
     const res = await fetch(url, options)
     const data = await res.json()
     return Promise.resolve(Object.keys(data).length > 0 ? data : null) // Return null if data empty

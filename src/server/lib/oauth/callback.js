@@ -64,6 +64,8 @@ export default async (req, provider, csrfToken, callback) => {
           return callback(error || results.error)
         }
 
+        logger.error('OAUTH_provider', provider)
+
         if (provider.idToken) {
           // If we don't have an ID Token most likely the user hit a cancel
           // button when signing in (or the provider is misconfigured).
@@ -238,6 +240,7 @@ async function _getOAuthAccessToken (code, provider, callback) {
       try {
         // As of http://tools.ietf.org/html/draft-ietf-oauth-v2-07
         // responses should be in JSON
+        logger.error('OAUTH_RESULTS', data)
         results = JSON.parse(data)
       } catch (e) {
         // However both Facebook + Github currently use rev05 of the spec  and neither
